@@ -2,24 +2,15 @@ import string
 
 punctuation_remover = str.maketrans('', '', string.punctuation)
 def remove_punctuation(s):
-    """Return a string with the same contents as s, but with punctuation removed.
-
-    >>> remove_punctuation("It's a lovely day, don't you think?")
-    'Its a lovely day dont you think'
-    """   
+    #Return a string with the same contents as s, but with punctuation removed.
     return s.strip().translate(punctuation_remover)
 
 def lower(s):
-    """Return a lowercased version of s."""
+    #Return a lowercased version of s
     return s.lower()
 
 def split(s):
-    """Return a list of words contained in s, which are sequences of characters
-    separated by whitespace (spaces, tabs, etc.).
-
-    >>> split("It's a lovely day, don't you think?")
-    ["It's", 'a', 'lovely', 'day,', "don't", 'you', 'think?']
-    """
+    #Return a list of words contained in s, which are sequences of characters
     return s.split()
 
 def contains(text, keywords):
