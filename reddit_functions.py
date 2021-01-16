@@ -32,5 +32,3 @@ def cute():
     ind = randint(0,len(posts) - 1)
     value = posts[ind]
     return value.url
-
-print(good_news())

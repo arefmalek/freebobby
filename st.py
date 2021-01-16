@@ -1,4 +1,5 @@
 import string
+import reddit_functions as rf
 
 punctuation_remover = str.maketrans('', '', string.punctuation)
 def remove_punctuation(s):
@@ -24,7 +25,11 @@ angry_keywords = ['pressed', 'pissed', 'mad']
 
 def are_you_okay(text):
     sad_word, mad_word = contains(text, sad_keywords), contains(text, angry_keywords)
+
+    link = rf.cute()
     if sad_word:
-        print("You said: ", sad_word, ". Are you ok? Here's a photo of a puppy to cheer you up")
+        print("You said: ", sad_word, ". Are you ok? Here's a photo of a puppy to cheer you up" + link)
     elif mad_word:
-        print('You said: ', mad_word, ". What is going on? Here's a photo of a kitten to calm you down")
+        print('You said: ', mad_word, ". What is going on? Here's a photo of a kitten to calm you down" + link)
+
+are_you_okay("I am depressed")
