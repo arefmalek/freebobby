@@ -16,7 +16,7 @@ def good_news():
 
     uplift = reddit.subreddit("upliftingnews")
 
-    posts = [submission for submission in uplift.hot(limit=10) if not submission.stickied]
+    posts = [submission for submission in uplift.hot(limit=50) if not submission.stickied]
 
     ind = randint(0,len(posts) - 1)
     value = posts[ind]
@@ -27,8 +27,8 @@ def cute():
 
     uplift = reddit.subreddit("aww")
 
-    posts = [submission for submission in uplift.hot(limit=10) if not submission.stickied]
+    posts = [submission for submission in uplift.hot(limit=50) if not submission.stickied]
 
     ind = randint(0,len(posts) - 1)
     value = posts[ind]
-    return value.url
+    return value
