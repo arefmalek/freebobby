@@ -5,11 +5,11 @@ import random
 def random_queue():
     chart = billboard.ChartData('hot-100')
 
-    numbers = np.random.randint(100, size=1)
+    numbers = np.random.randint(100, size=10)
 
-    songs = []
+    songs = "Looking for some new hits? try these:\n "
     for num in numbers:
-        songs.append("-p " + str(chart[num]))
+        songs += (str(chart[num]) + '\n')
     
     return songs
 

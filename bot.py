@@ -53,10 +53,7 @@ async def on_message(message):
     elif message.content.startswith('!song'):
         charts = bf.random_queue()
 
-        await message.channel.send("Now Queueing 10 random songs from billboard top 100\n")
-
-        for song in charts:
-            await message.channel.send(song)
+        await message.channel.send(charts)
 
     elif message.content.startswith('!today'):
 
