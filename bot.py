@@ -6,6 +6,7 @@ import numpy as np
 import reddit_functions as rf
 import billboard_functions as bf
 import st
+import activities as act
 
 with open("keys.json") as f:
     info = json.load(f)
@@ -25,10 +26,13 @@ async def on_message(message):
     if message.author == client.user:
         return
 
+    #good news subreddit
     if message.content.startswith('!goodnews'):
         news, link = rf.good_news()
         await message.channel.send("Here's some good news\n\n" + 
         news + "\n" + link)
+    
+    #basic r/awww post to lift spirits
     elif message.content.startswith('!sad'):
         post = rf.cute()
 
@@ -36,6 +40,24 @@ async def on_message(message):
         await message.channel.send("If you're feeling sad, here's something cute to cheer you up\n\n" + 
         "from u/" + str(post.author.name) + ": " + post.title + '\n' + post.url
         )
+    
+    #gives movie game or TV show
+    elif message.content.startswith('!activity '):
+        answer = ""
+        genre = message.content.split(' ')
+        if len(genre) > 0:
+            genre = genre[1]
+            if genre == "game":
+                answer = act.game()
+            if genre == "TV":
+                answer = act.television()
+            if genre == "movie":
+                answer = act.movie()
+        
+        await message.channel.send(answer)
+        return
+
+               
     
     elif message.content.startswith('!song'):
         charts = bf.random_queue()

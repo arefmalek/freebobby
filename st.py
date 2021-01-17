@@ -29,9 +29,3 @@ def are_you_okay(word):
     link = rf.cute()
 
     return ("You said: {}. Are you ok? Here's something cute to cheer you up :)\n{}".format(word, link.url))
-
-
-line = "I am depressed"
-results = contains(line)
-if results[0]:
-    print(are_you_okay(results[1]))
