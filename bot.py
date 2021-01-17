@@ -44,6 +44,22 @@ async def on_message(message):
 
         for song in charts:
             await message.channel.send(song)
+
+    elif message.content.startswith('!today'):
+
+        embedVar = discord.Embed(title="Daily Dashboard", description=" ", color=discord.Color.teal())
+
+        rlink = rf.cute().url
+        embedVar.set_thumbnail(url=rlink)
+        embedVar.add_field(name='Post of the Day', value=rlink, inline=False)
+
+        embedVar.add_field(name="Music's Top 5", value=bf.top_five(), inline=False)
+
+        embedVar.add_field(name="Self Care Tip of the Day", value=bl.bucketRandom(), inline=False)
+
+        embedVar.set_footer(text='Source: https://wholefully.com/self-care-ideas/')
+
+        await message.channel.send(embed=embedVar)
     
     elif st.contains(message.content)[0]:
         info = st.contains(message.content)

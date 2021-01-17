@@ -13,3 +13,13 @@ def random_queue():
     
     return songs
 
+def top_five():
+  chart = billboard.ChartData('hot-100')
+
+  numbers = np.arange(1,6)
+
+  songs = []
+  for num in numbers:
+    songs.append(str(chart[num]))
+  return songs
+

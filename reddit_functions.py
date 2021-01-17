@@ -32,3 +32,14 @@ def cute():
     ind = randint(0,len(posts) - 1)
     value = posts[ind]
     return value
+
+def dailypic():
+    posts = []
+
+    uplift = reddit.subreddit("pic")
+
+    posts = [submission for submission in uplift.hot(limit=50) if not submission.stickied]
+
+    ind = randint(0,len(posts) - 1)
+    value = posts[ind]
+    return value
