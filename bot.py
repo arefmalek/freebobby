@@ -32,15 +32,6 @@ async def on_message(message):
         await message.channel.send("Here's some good news\n\n" + 
         news + "\n" + link)
     
-    #basic r/awww post to lift spirits
-    elif message.content.startswith('!sad'):
-        post = rf.cute()
-
-
-        await message.channel.send("If you're feeling sad, here's something cute to cheer you up\n\n" + 
-        "from u/" + str(post.author.name) + ": " + post.title + '\n' + post.url
-        )
-    
     #gives movie game or TV show
     elif message.content.startswith('!activity '):
         answer = ""

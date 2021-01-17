@@ -28,4 +28,5 @@ def contains(text):
 def are_you_okay(word):
     link = rf.cute()
 
-    return ("You said: {}. Are you ok? Here's something cute to cheer you up :)\n{}".format(word, link.url))
+    return ("You said: {}. Are you ok? Here's something cute from u/{} to cheer you up :)\n{}".format(
+        word, str(link.author.name), link.url))
