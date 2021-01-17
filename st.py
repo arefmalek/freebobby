@@ -14,22 +14,24 @@ def split(s):
     #Return a list of words contained in s, which are sequences of characters
     return s.split()
 
-def contains(text, keywords):
+def contains(text):
+    sad_keywords = ['depressed', 'sad']
+    angry_keywords = ['pressed', 'pissed', 'mad']
+    
+    keywords = sad_keywords.copy()
+    keywords.extend(angry_keywords)
     for w in split(lower(remove_punctuation(text))):
         if w in keywords:
-            return w
-    return None
+            return True, w
+    return False, w
 
-sad_keywords = ['depressed', 'sad']
-angry_keywords = ['pressed', 'pissed', 'mad']
-
-def are_you_okay(text):
-    sad_word, mad_word = contains(text, sad_keywords), contains(text, angry_keywords)
-
+def are_you_okay(word):
     link = rf.cute()
-    if sad_word:
-        print("You said: ", sad_word, ". Are you ok? Here's a photo of a puppy to cheer you up" + link)
-    elif mad_word:
-        print('You said: ', mad_word, ". What is going on? Here's a photo of a kitten to calm you down" + link)
 
-are_you_okay("I am depressed")
+    return ("You said: {}. Are you ok? Here's something cute to cheer you up :)\n{}".format(word, link.url))
+
+
+line = "I am depressed"
+results = contains(line)
+if results[0]:
+    print(are_you_okay(results[1]))
