@@ -59,7 +59,7 @@ async def on_message(message):
 
         embedVar = discord.Embed(title="Daily Dashboard", description=" ", color=discord.Color.teal())
 
-        rlink = rf.cute().url
+        rlink = rf.dailypic().url
         embedVar.set_thumbnail(url=rlink)
         embedVar.add_field(name='Post of the Day', value=rlink, inline=False)
 
@@ -77,7 +77,7 @@ async def on_message(message):
         await message.channel.send(st.are_you_okay(info[1]))
 
     ###Calendar/To Do List
-    elif message.content.startswith('$addtask'):
+    elif message.content.startswith('!addtask'):
         global todolist
         args = message.content.split(' ')
         task = args[1]
@@ -91,12 +91,12 @@ async def on_message(message):
 
         await message.channel.send('Task added')
 
-    elif message.content.startswith('$todo'):
+    elif message.content.startswith('!todo'):
         await message.channel.send(headers)
         for item in todolist:
             await message.channel.send(item)
 
-    elif message.content.startswith('$done'):
+    elif message.content.startswith('!done'):
         args = message.content.split(' ')[1]
         for item in range(len(todolist)):
             if args == todolist[item][0]:
