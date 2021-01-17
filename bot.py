@@ -11,8 +11,8 @@ with open("keys.json") as f:
     info = json.load(f)
 
 
-headers = ['Task', 'Start', 'End', 'Done']
-todolist = np.array([])
+headers = ['Task', 'Start', 'End']
+todolist = np.empty(shape=[0,3])
 
 client = discord.Client()
 
@@ -65,8 +65,35 @@ async def on_message(message):
         info = st.contains(message.content)
 
         await message.channel.send(st.are_you_okay(info[1]))
+
+    ###Calendar/To Do List
+    elif message.content.startswith('$addtask'):
+        global todolist
+        args = message.content.split(' ')
+        task = args[1]
+        start = args[2]
+        end = args[3]
+        item = np.array([task, start, end])
+        todolist = np.append(todolist, [item], axis=0)
+
+        todolist = todolist[todolist[:, 1].argsort()]
+        print(todolist)
+
+        await message.channel.send('Task added')
+
+    elif message.content.startswith('$todo'):
+        await message.channel.send(headers)
+        for item in todolist:
+            await message.channel.send(item)
+
+    elif message.content.startswith('$done'):
+        args = message.content.split(' ')[1]
+        for item in range(len(todolist)):
+            if args == todolist[item][0]:
+                await message.channel.send("Congrats on finishing " + args + "!")
+                todolist = np.delete(todolist, item, axis=0)
     
-    
+
 
 
     
