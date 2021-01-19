@@ -1,21 +1,31 @@
 # Bobby Buddy
 
-
 ## Inspiration
 We have all suffered mentally from the pandemic in one way or another, and we felt that we wanted to make a tool to help those that were probably feeling the same way. We wanted a bot that would bring our friends together, not apart.
 
-## What it does
-Detects signs of poor mental health through passive text detection, gives uplifting news stories, and suggests interactive activities (movies, TV shows, games) to bring friends together
+## Functions
+These sort of things are explainable, but probably better shown than anything, enjoy :)
 
-## How I built it
-Built with Python, running multiple social media APIs to collect the most up to date information
-The core of our application really focuses on integrating multiple APIs in order to streamline object data to the user. For example, our !activity command that suggests interactive activities, we scrape from imdb top 250 movies and top 250 TV shows to build a dictionary of games, movies, and TV shows. This dictionary can be accessed to return an activity that friends can do to get together. We imported randint to access a random value in a key-value pair; this returns a random movie, TV show, or game (depending on the commands: !activity game, !activity movie, !activity TV)
+### Text detection
+One of the largest issues we wanted Bobby to do is to pick up on the little things. We made sure that if Bobby detected a 'sad' (ex: "sad") or mad (ex: "pressed) he would be able to provide a nice message :)
+![](demo_text_detection.gif)
 
-Our passive text detection returns a photo from subreddit r/awww when “sad” or “angry” keywords are detected in a user’s text (negative emotions indicated from the words in a message). We split the string that’s a sentence into a list of words based on whitespace between words; we iterate through the list of split text and if an element in the list is also present in list of “sad” and “angry” keywords, returns the “angry” or “sad” word.
+### Good news!
+2020 was not a year of good news - for that reason, we made sure that whenever a user wanted, Bobby could quickly give a user good news. The best part of the function is that the function calls using the ```PRAW``` API so that we can always the freshest content from the hot page of r/upliftingnews (and a randomized selection so that the news is different)
 
-By using Python Reddit API Wrapper (PRAW), we were able to queue for the most popular posts on reddit and filter for our subreddit (r/aww) by compiling all this data in a list, we can randomly pick a post that we would like to give the user, and have the discord bot return the post’s content, in addition to a message :)
+### Activity
+We made a bs4 script to scrape the top 250 movies AND songs from imdb and store it in a database that Bobby can easily give to a user should they want to watch somthing with some friends. Excuse the typing, but it's a pretty cool feature!
+![](demo_goodnews.gif)
 
-## Challenges I ran into
+### Fresh Music
+Using a billboard API, we are able to constantly queue for the top 100 songs on billboard at any time and give a randomized selection of 10 songs at any point in time.  
+![](demo_songlist.gif)
+
+### Todo List
+We wanted people to keep track of the things they do in one day, and get some positive reinforcement for all of the activities they did for the day. Bobby does both :>
+![](demo_todolist.gif)
+
+## Challenges we ran into
 Major issues parsing through data structures of various platforms we were scraping stories/media off of. Using discord API to display messages to the bot users. Running asynchronous tasks for our Discord bot, like to remind users of their tasks.
 
 ## Accomplishments that I'm proud of
