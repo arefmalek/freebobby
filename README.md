@@ -14,16 +14,18 @@ One of the largest issues we wanted Bobby to do is to pick up on the little thin
 2020 was not a year of good news - for that reason, we made sure that whenever a user wanted, Bobby could quickly give a user good news. The best part of the function is that the function calls using the ```PRAW``` API so that we can always the freshest content from the hot page of r/upliftingnews (and a randomized selection so that the news is different)
 
 ### Activity
-We made a bs4 script to scrape the top 250 movies AND songs from imdb and store it in a database that Bobby can easily give to a user should they want to watch somthing with some friends. Excuse the typing, but it's a pretty cool feature!
+We made a bs4 script to scrape the top 250 movies AND songs from imdb and store it in a database that Bobby can easily give to a user should they want to watch somthing with some friends. 
+
+### Excuse the typing lol
 ![](demo_goodnews.gif)
+
 
 ### Fresh Music
 Using a billboard API, we are able to constantly queue for the top 100 songs on billboard at any time and give a randomized selection of 10 songs at any point in time.  
-![](demo_songlist.gif)
 
 ### Todo List
 We wanted people to keep track of the things they do in one day, and get some positive reinforcement for all of the activities they did for the day. Bobby does both :>
-![](demo_todolist.gif)
+![](demo_songlist.gif)
 
 ## Challenges we ran into
 Major issues parsing through data structures of various platforms we were scraping stories/media off of. Using discord API to display messages to the bot users. Running asynchronous tasks for our Discord bot, like to remind users of their tasks.
